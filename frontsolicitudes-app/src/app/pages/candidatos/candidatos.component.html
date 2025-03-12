@@ -1,0 +1,54 @@
+<h2>Lista de Candidatos</h2>
+<button (click)="toggleFormulario()">Nuevo Candidato</button>
+
+<!-- Formulario de Nuevo/Editar Candidato -->
+<div *ngIf="mostrarFormulario" class="formulario">
+    <h3>{{ editandoId ? 'Editar Candidato' : 'Nuevo Candidato' }}</h3>
+    <form [formGroup]="candidatoForm" (ngSubmit)="guardarCandidato()">
+      <label>Nombre:</label>
+      <input type="text" formControlName="nombre">
+
+      <label>Apellido:</label>
+      <input type="text" formControlName="apellido">
+
+      <label>Documento identidad:</label>
+      <input type="text" formControlName="documento_identidad">
+
+      <label>Correo:</label>
+      <input type="email" formControlName="correo">
+
+      <label>Teléfono:</label>
+      <input type="text" formControlName="telefono">
+
+      <button type="submit" [disabled]="candidatoForm.invalid">
+        {{ editandoId ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <button type="button" (click)="toggleFormulario()">Cancelar</button>
+    </form>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Correo</th>
+      <th>Teléfono</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let candidato of candidatos">
+      <td>{{ candidato.id }}</td>
+      <td>{{ candidato.nombre }}</td>
+      <td>{{ candidato.apellido }}</td>
+      <td>{{ candidato.correo }}</td>
+      <td>{{ candidato.telefono }}</td>
+      <td>
+        <button (click)="editarCandidato(candidato)">Editar</button>
+        <button (click)="eliminarCandidato(candidato.id)" class="btn btn-danger">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
