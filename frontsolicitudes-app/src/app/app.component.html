@@ -1,16 +1,5 @@
-<!-- Header -->
-
-<main>
-  <router-outlet></router-outlet>
-</main>
-
-<!-- Footer -->
-<footer class="footer text-white text-center p-3 mt-auto">
-  <p>&copy; 2024 Mi Empresa. Todos los derechos reservados.</p>
-  <nav>
-    <ul>
-      <li><a routerLink="/privacy" routerLinkActive="active">Política de privacidad</a></li>
-      <li><a routerLink="/terms" routerLinkActive="active">Términos y condiciones</a></li>
-    </ul>
-  </nav>
-</footer>
+<app-navbar></app-navbar> <!-- 🔥 Header Reutilizable -->
+<div class="container mt-4">
+  <router-outlet></router-outlet> <!-- 🔥 Aquí se renderizan las páginas -->
+</div>
+<app-footer-bar></app-footer-bar> <!-- 🔥 Footer Reutilizable -->
